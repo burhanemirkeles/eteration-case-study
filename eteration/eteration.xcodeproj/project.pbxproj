@@ -20,6 +20,7 @@
 		7565F4B32C5D7EEB009FCB89 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565F4B22C5D7EEB009FCB89 /* HomeViewController.swift */; };
 		7565F4B52C5D7F0C009FCB89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565F4B42C5D7F0C009FCB89 /* HomeViewModel.swift */; };
 		7565F4B72C5D7F24009FCB89 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565F4B62C5D7F24009FCB89 /* HomeModel.swift */; };
+		75A0A60E2C5D85EE00E714F1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 75A0A60D2C5D85EE00E714F1 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A0A60E2C5D85EE00E714F1 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +189,9 @@
 			dependencies = (
 			);
 			name = eteration;
+			packageProductDependencies = (
+				75A0A60D2C5D85EE00E714F1 /* Kingfisher */,
+			);
 			productName = eteration;
 			productReference = 7520DE192C5D749500472E19 /* eteration.app */;
 			productType = "com.apple.product-type.application";
@@ -259,6 +264,9 @@
 				Base,
 			);
 			mainGroup = 7520DE102C5D749500472E19;
+			packageReferences = (
+				75A0A60C2C5D85EE00E714F1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 7520DE1A2C5D749500472E19 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -649,6 +657,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		75A0A60C2C5D85EE00E714F1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		75A0A60D2C5D85EE00E714F1 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75A0A60C2C5D85EE00E714F1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7520DE252C5D749500472E19 /* eteration.xcdatamodeld */ = {
