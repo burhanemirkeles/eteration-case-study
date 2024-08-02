@@ -9,9 +9,9 @@ import UIKit
 
 public final class FiltersView: UIView {
   public struct Item {
-    let onTapButton: () -> Void
-    
-    init(onTapButton: @escaping () -> Void) {
+    let onTapButton: VoidCallback
+
+    init(onTapButton: @escaping VoidCallback) {
       self.onTapButton = onTapButton
     }
   }
@@ -36,8 +36,9 @@ public final class FiltersView: UIView {
     return button
   }()
 
-  override init(frame: CGRect) {
+  init(item: FiltersView.Item, frame: CGRect = CGRect()) {
     super.init(frame: frame)
+    self.item = item
     setupView()
     configureButton()
   }
@@ -67,6 +68,10 @@ public final class FiltersView: UIView {
   }
 
   @objc private func onTapSelectFilterButton() {
-    print("Tapped Button")
+    tapFunc()
+  }
+
+  private func tapFunc() {
+    item?.onTapButton()
   }
 }

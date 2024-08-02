@@ -18,7 +18,13 @@ class HomeViewController: UIViewController {
   }()
 
   private let filtersView: FiltersView = {
-    let view = FiltersView()
+    let view = FiltersView(
+      item: FiltersView.Item(
+        onTapButton: {
+          // TODO: Add On Tap Action
+        }
+      )
+    )
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()

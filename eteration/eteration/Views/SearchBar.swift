@@ -11,6 +11,7 @@ public final class SearchBar: UIView {
   private let searchBar: UISearchBar = {
     let searchBar = UISearchBar()
     searchBar.placeholder = "Search"
+    searchBar.searchBarStyle = .minimal
     searchBar.translatesAutoresizingMaskIntoConstraints = false
     return searchBar
   }()
