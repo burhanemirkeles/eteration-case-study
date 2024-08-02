@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  eteration
 //
 //  Created by Emir Keleş on 2.08.2024.
@@ -7,15 +7,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
+  private var viewModel: HomeViewModel
+
+  init() {
+    let model = HomeModel(title: "Home Page")
+    self.viewModel = HomeViewModel(model: model)
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     view.backgroundColor = .white
+    title = viewModel.title
 
     let label = UILabel()
-    label.text = "Hello, eteration!"
+    label.text = viewModel.title
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(label)
@@ -25,6 +37,4 @@ class ViewController: UIViewController {
       label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
   }
-
 }
-
