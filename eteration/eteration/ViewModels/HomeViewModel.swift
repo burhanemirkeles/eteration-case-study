@@ -11,6 +11,6 @@ class HomeViewModel {
   var title: String
 
   init(model: HomeModel) {
-    self.title = model.title
+    self.title = model.title ?? ""
   }
 }
