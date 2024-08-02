@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
   private var viewModel: HomeViewModel
 
   init() {
-    let model = HomeModel(title: "Home Page")
+    let model = HomeModel(title: nil)
     self.viewModel = HomeViewModel(model: model)
     super.init(nibName: nil, bundle: nil)
   }

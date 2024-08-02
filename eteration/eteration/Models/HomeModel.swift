@@ -6,5 +6,5 @@
 //
 
 struct HomeModel {
-  let title: String
+  let title: String?
 }
