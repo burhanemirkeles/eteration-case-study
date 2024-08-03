@@ -15,7 +15,7 @@ public class CoreDataHelper {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = appDelegate.persistentContainer.viewContext
     let itemToAddCart = NSEntityDescription.insertNewObject(forEntityName: "CartItem", into: context)
-    
+
     guard let shopItem else { return }
     itemToAddCart.setValue(shopItem.id, forKey: CartItemAttributes.id)
     itemToAddCart.setValue(shopItem.brand, forKey: CartItemAttributes.brand)
@@ -33,8 +33,26 @@ public class CoreDataHelper {
     }
   }
 
+  func deleteData(shopItem: ShopItem?) {
+    let  appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = appDelegate.persistentContainer.viewContext
+    let coord = context.persistentStoreCoordinator
+
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CartItem")
+
+    let predicate = NSPredicate(format: "id == %@", (shopItem?.id).orEmpty)
+    fetchRequest.predicate = predicate
+
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    do {
+      try coord?.execute(deleteRequest, with: context)
+    } catch  {
+      print(error.localizedDescription)
+    }
+  }
+
   func fetchCartItems() -> [ShopItem] {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let  appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CartItem")
     request.returnsObjectsAsFaults = false
