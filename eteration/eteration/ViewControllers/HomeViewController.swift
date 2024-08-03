@@ -53,6 +53,7 @@ class HomeViewController: UIViewController {
     setupCollectionView()
     setupLoadingIndicator()
     setupBindings()
+    viewModel.fetchCartItems()
     viewModel.fetchItems()
   }
 

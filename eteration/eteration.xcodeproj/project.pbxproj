@@ -22,6 +22,7 @@
 		7520DE372C5D749700472E19 /* eterationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE362C5D749700472E19 /* eterationTests.swift */; };
 		7520DE412C5D749700472E19 /* eterationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE402C5D749700472E19 /* eterationUITests.swift */; };
 		7520DE432C5D749700472E19 /* eterationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE422C5D749700472E19 /* eterationUITestsLaunchTests.swift */; };
+		7524AFA12C5EBE52007470E0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524AFA02C5EBE52007470E0 /* CoreDataHelper.swift */; };
 		755F30F92C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */; };
 		755F30FB2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */; };
 		75614CD52C5DA4A100C52716 /* ShopItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75614CD42C5DA4A100C52716 /* ShopItemCollectionViewCell.swift */; };
@@ -76,6 +77,7 @@
 		7520DE3C2C5D749700472E19 /* eterationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eterationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7520DE402C5D749700472E19 /* eterationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eterationUITests.swift; sourceTree = "<group>"; };
 		7520DE422C5D749700472E19 /* eterationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eterationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7524AFA02C5EBE52007470E0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UISearchbar.swift"; sourceTree = "<group>"; };
 		75614CD42C5DA4A100C52716 /* ShopItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				75C449242C5E9589003F5CDF /* APIService.swift */,
 				75614CD82C5DC1DF00C52716 /* ShopItemModel.swift */,
+				7524AFA02C5EBE52007470E0 /* CoreDataHelper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				755F30F92C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift in Sources */,
 				75614CD52C5DA4A100C52716 /* ShopItemCollectionViewCell.swift in Sources */,
 				7515618F2C5D940A008FF752 /* SearchBar.swift in Sources */,
+				7524AFA12C5EBE52007470E0 /* CoreDataHelper.swift in Sources */,
 				7520DE1D2C5D749500472E19 /* AppDelegate.swift in Sources */,
 				751561932C5DA25E008FF752 /* Typealias.swift in Sources */,
 				755F30FB2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift in Sources */,

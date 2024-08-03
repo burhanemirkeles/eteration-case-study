@@ -121,25 +121,6 @@ class ShopItemCollectionViewCell: UICollectionViewCell {
   }
 
   @objc func actionButtonTapped() {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let context = appDelegate.persistentContainer.viewContext
-    let itemToAddCart = NSEntityDescription.insertNewObject(forEntityName: "CartItem", into: context)
-
-    if let shopItem = self.shopItem {
-      itemToAddCart.setValue(shopItem.id, forKey: CartItemAttributes.id)
-      itemToAddCart.setValue(self.shopItem?.brand, forKey: CartItemAttributes.brand)
-      itemToAddCart.setValue(self.shopItem?.createdAt, forKey: CartItemAttributes.createdAt)
-      itemToAddCart.setValue(self.shopItem?.description, forKey: CartItemAttributes.detail)
-      itemToAddCart.setValue(self.shopItem?.imageUrl, forKey: CartItemAttributes.imageUrl)
-      itemToAddCart.setValue(self.shopItem?.model, forKey: CartItemAttributes.model)
-      itemToAddCart.setValue(self.shopItem?.name, forKey: CartItemAttributes.name)
-      itemToAddCart.setValue(self.shopItem?.price, forKey: CartItemAttributes.price)
-    }
-
-    do {
-      try context.save()
-    } catch {
-      print("Error on adding cart")
-    }
+    CoreDataHelper.shared.saveData(shopItem: self.shopItem)
   }
 }
