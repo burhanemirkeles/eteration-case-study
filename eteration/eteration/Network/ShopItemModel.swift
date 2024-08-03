@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShopItem: Codable {
+public struct ShopItem: Codable {
   let createdAt, name: String?
   let imageUrl: String?
   let price, description, model, brand: String?

@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class HomeViewModel {
   private let model: HomeModel
   private var allItems: [ShopItem] = []
+  var cartItems: [ShopItem] = []
   var filteredItems: [ShopItem] = []
   var reloadCollectionView: (() -> Void)?
 
@@ -42,6 +45,10 @@ class HomeViewModel {
     }
 
     task.resume()
+  }
+
+  func fetchCartItems() {
+    self.cartItems = CoreDataHelper.shared.fetchCartItems()
   }
 
   func filterItems(with query: String) {
