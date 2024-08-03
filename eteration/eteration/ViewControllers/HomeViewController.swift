@@ -27,6 +27,13 @@ class HomeViewController: UIViewController {
     return collectionView
   }()
 
+  private let loadingIndicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.color = .gray
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    return indicator
+  }()
+
   init() {
     let model = HomeModel(title: "Home Page")
     self.viewModel = HomeViewModel(model: model)
@@ -43,6 +50,19 @@ class HomeViewController: UIViewController {
     setupSearchBar()
     setupFiltersView()
     setupCollectionView()
+    setupLoadingIndicator()
+    setupBindings()
+    viewModel.fetchItems()
+  }
+
+  private func setupBindings() {
+    loadingIndicator.startAnimating()
+    viewModel.reloadCollectionView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.loadingIndicator.stopAnimating()
+        self?.collectionView.reloadData()
+      }
+    }
   }
 
   // MARK: - Configure Subviews
@@ -91,6 +111,15 @@ class HomeViewController: UIViewController {
     ])
   }
 
+  private func setupLoadingIndicator() {
+    view.addSubview(loadingIndicator)
+
+    NSLayoutConstraint.activate([
+      loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+  }
+
   private func presentFilterViewController() {
     let filterViewController = FilterViewController()
     filterViewController.modalPresentationStyle = .pageSheet
@@ -100,7 +129,6 @@ class HomeViewController: UIViewController {
   private func presentDetailViewController(for item: ShopItem) {
     let viewModel = DetailViewModel(item: item)
     let detailViewController = DetailViewController(viewModel: viewModel)
-    //    detailViewController.hidesBottomBarWhenPushed = false
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 
@@ -108,7 +136,7 @@ class HomeViewController: UIViewController {
 // MARK: CollectionView Delegate & Layout
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return viewModel.items.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,15 +144,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
       return UICollectionViewCell()
     }
 
-    let item = ShopItem(createdAt: "2023-07-17T07:21:02.529Z", name: "iPhone 13 Pro Max 256Gb", imageUrl: "https://loremflickr.com/640/480/food", price: "15.000 ₺", description: "zort", model: "iPhone 13", brand: "Apple", id: "1")
+    let item = viewModel.items[indexPath.row]
     cell.configure(with: ShopItemCollectionViewCell.Item(priceText: item.price.orEmpty, nameText: item.name.orEmpty, isFavorited: false, imageUrl: item.imageUrl.orEmpty))
 
     return cell
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let item = ShopItem(createdAt: "123", name: "Apple iPhone 14 Pro Max 256 GB", imageUrl: "https://loremflickr.com/640/480/food", price: "123421 ₺", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales nibh pretium ipsum faucibus, a commodo tortor blandit. Duis pellentesque, purus sed gravida sagittis, tortor urna eleifend ante, a volutpat ex est vel ipsum. Etiam in auctor nisi. Donec in mattis enim, in bibendum lorem. Nam vitae semper quam.", model: "14 Pro Max", brand: "Apple", id: "1")
-    
+    let item = viewModel.items[indexPath.row]
     presentDetailViewController(for: item)
   }
 
