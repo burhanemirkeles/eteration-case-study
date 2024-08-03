@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-  private var viewModel: HomeViewModel
+  internal var viewModel: HomeViewModel
 
   // MARK: - Subviews
   private let customSearchBar: SearchBar = {
@@ -114,10 +114,14 @@ class HomeViewController: UIViewController {
   private func presentFilterViewController() {
     let filterViewController = FilterViewController()
     filterViewController.modalPresentationStyle = .pageSheet
+    if let sheet = filterViewController.sheetPresentationController {
+      sheet.prefersGrabberVisible = true
+      sheet.presentingViewController.title = "Filter"
+    }
     present(filterViewController, animated: true, completion: nil)
   }
 
-  private func presentDetailViewController(for item: ShopItem) {
+  internal func presentDetailViewController(for item: ShopItem) {
     let viewModel = DetailViewModel(item: item)
     let detailViewController = DetailViewController(viewModel: viewModel)
     detailViewController.hidesBottomBarWhenPushed = false
@@ -132,47 +136,5 @@ class HomeViewController: UIViewController {
       }
     }
     loadingIndicator.startAnimating()
-  }
-}
-// MARK: - SearchBar Delegate
-extension HomeViewController: UISearchBarDelegate {
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    viewModel.filterItems(with: searchText)
-  }
-
-  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.text = ""
-    viewModel.filterItems(with: "")
-  }
-}
-
-// MARK: CollectionView Delegate & Layout
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.filteredItems.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCollectionViewCell", for: indexPath) as? ShopItemCollectionViewCell else {
-      return UICollectionViewCell()
-    }
-
-    let item = viewModel.filteredItems[indexPath.row]
-    cell.configure(with: ShopItemCollectionViewCell.Item(priceText: item.price.orEmpty, nameText: item.name.orEmpty, isFavorited: false, imageUrl: item.imageUrl.orEmpty))
-
-    return cell
-  }
-
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let item = viewModel.filteredItems[indexPath.row]
-    presentDetailViewController(for: item)
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 170, height: 302)
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
   }
 }
