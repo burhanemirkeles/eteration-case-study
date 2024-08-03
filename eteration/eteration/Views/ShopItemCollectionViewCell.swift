@@ -7,15 +7,10 @@
 
 import UIKit
 import Kingfisher
+import CoreData
 
 class ShopItemCollectionViewCell: UICollectionViewCell {
-
-  public struct Item {
-    let priceText: String
-    let nameText: String
-    let isFavorited: Bool
-    let imageUrl: String
-  }
+  private var shopItem: ShopItem?
 
   private let itemImageView: UIImageView = {
     let imageView = UIImageView()
@@ -65,7 +60,6 @@ class ShopItemCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupView()
-
   }
 
   required init?(coder: NSCoder) {
@@ -108,18 +102,44 @@ class ShopItemCollectionViewCell: UICollectionViewCell {
       actionButton.heightAnchor.constraint(equalToConstant: 36)
     ])
 
+    actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+
     favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
 
   }
 
-  func configure(with item: ShopItemCollectionViewCell.Item) {
-    itemImageView.kf.setImage(with: URL(string: item.imageUrl))
-    priceLabel.text = item.priceText
-    nameLabel.text = item.nameText
-    favoriteButton.isSelected = item.isFavorited
+  func configure(with item: ShopItem) {
+    self.shopItem = item
+    itemImageView.kf.setImage(with: URL(string: item.imageUrl.orEmpty))
+    priceLabel.text = item.price
+    nameLabel.text = item.name
+    favoriteButton.isSelected = false
   }
 
   @objc func favoriteButtonTapped() {
     favoriteButton.isSelected.toggle()
+  }
+
+  @objc func actionButtonTapped() {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = appDelegate.persistentContainer.viewContext
+    let itemToAddCart = NSEntityDescription.insertNewObject(forEntityName: "CartItem", into: context)
+
+    if let shopItem = self.shopItem {
+      itemToAddCart.setValue(shopItem.id, forKey: CartItemAttributes.id)
+      itemToAddCart.setValue(self.shopItem?.brand, forKey: CartItemAttributes.brand)
+      itemToAddCart.setValue(self.shopItem?.createdAt, forKey: CartItemAttributes.createdAt)
+      itemToAddCart.setValue(self.shopItem?.description, forKey: CartItemAttributes.detail)
+      itemToAddCart.setValue(self.shopItem?.imageUrl, forKey: CartItemAttributes.imageUrl)
+      itemToAddCart.setValue(self.shopItem?.model, forKey: CartItemAttributes.model)
+      itemToAddCart.setValue(self.shopItem?.name, forKey: CartItemAttributes.name)
+      itemToAddCart.setValue(self.shopItem?.price, forKey: CartItemAttributes.price)
+    }
+
+    do {
+      try context.save()
+    } catch {
+      print("Error on adding cart")
+    }
   }
 }

@@ -18,7 +18,17 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     let item = viewModel.filteredItems[indexPath.row]
-    cell.configure(with: ShopItemCollectionViewCell.Item(priceText: item.price.orEmpty, nameText: item.name.orEmpty, isFavorited: false, imageUrl: item.imageUrl.orEmpty))
+    cell.configure(
+      with: ShopItem(
+        createdAt: item.createdAt,
+        name: item.name,
+        imageUrl: item.imageUrl,
+        price: item.price,
+        description: item.description,
+        model: item.model,
+        brand: item.brand, id: item.id
+      )
+    )
 
     return cell
   }
