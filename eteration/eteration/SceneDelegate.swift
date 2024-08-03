@@ -17,8 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     window = UIWindow(windowScene: windowScene)
     let mainTabBarController = MainTabBarController()
+    let navigationController = UINavigationController(rootViewController: mainTabBarController)
 
-    window?.rootViewController = mainTabBarController
+    window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
   }
 
