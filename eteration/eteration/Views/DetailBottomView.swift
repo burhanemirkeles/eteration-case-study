@@ -63,8 +63,8 @@ class DetailBottomView: UIView {
 
       actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
       actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-      actionButton.widthAnchor.constraint(equalToConstant: 100),
-      actionButton.heightAnchor.constraint(equalToConstant: 44)
+      actionButton.widthAnchor.constraint(equalToConstant: 182),
+      actionButton.heightAnchor.constraint(equalToConstant: 38)
     ])
   }
 }

@@ -36,6 +36,7 @@
 		75C449202C5E815D003F5CDF /* DetailBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4491F2C5E815D003F5CDF /* DetailBottomView.swift */; };
 		75C449222C5E8B7A003F5CDF /* DetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C449212C5E8B7A003F5CDF /* DetailItemView.swift */; };
 		75C449252C5E9589003F5CDF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C449242C5E9589003F5CDF /* APIService.swift */; };
+		75EE16382C5EAADF0048B29F /* CartItemAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EE16372C5EAADF0048B29F /* CartItemAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		75C4491F2C5E815D003F5CDF /* DetailBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBottomView.swift; sourceTree = "<group>"; };
 		75C449212C5E8B7A003F5CDF /* DetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemView.swift; sourceTree = "<group>"; };
 		75C449242C5E9589003F5CDF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		75EE16372C5EAADF0048B29F /* CartItemAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				7565F4B62C5D7F24009FCB89 /* HomeModel.swift */,
+				75EE16372C5EAADF0048B29F /* CartItemAttributes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				7565F4B32C5D7EEB009FCB89 /* HomeViewController.swift in Sources */,
 				75614CD72C5DC0C400C52716 /* FiltersViewController.swift in Sources */,
 				7565F4B52C5D7F0C009FCB89 /* HomeViewModel.swift in Sources */,
+				75EE16382C5EAADF0048B29F /* CartItemAttributes.swift in Sources */,
 				75C449222C5E8B7A003F5CDF /* DetailItemView.swift in Sources */,
 				75C449252C5E9589003F5CDF /* APIService.swift in Sources */,
 				7520DE212C5D749500472E19 /* MainTabBarController.swift in Sources */,
