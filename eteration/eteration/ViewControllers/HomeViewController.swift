@@ -47,22 +47,13 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    customSearchBar.getSearchBar().delegate = self
     setupSearchBar()
     setupFiltersView()
     setupCollectionView()
     setupLoadingIndicator()
     setupBindings()
     viewModel.fetchItems()
-  }
-
-  private func setupBindings() {
-    loadingIndicator.startAnimating()
-    viewModel.reloadCollectionView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.loadingIndicator.stopAnimating()
-        self?.collectionView.reloadData()
-      }
-    }
   }
 
   // MARK: - Configure Subviews
@@ -129,14 +120,36 @@ class HomeViewController: UIViewController {
   private func presentDetailViewController(for item: ShopItem) {
     let viewModel = DetailViewModel(item: item)
     let detailViewController = DetailViewController(viewModel: viewModel)
+    detailViewController.hidesBottomBarWhenPushed = false
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 
+  private func setupBindings() {
+    viewModel.reloadCollectionView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.loadingIndicator.stopAnimating()
+        self?.collectionView.reloadData()
+      }
+    }
+    loadingIndicator.startAnimating()
+  }
 }
+// MARK: - SearchBar Delegate
+extension HomeViewController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    viewModel.filterItems(with: searchText)
+  }
+
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = ""
+    viewModel.filterItems(with: "")
+  }
+}
+
 // MARK: CollectionView Delegate & Layout
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.items.count
+    return viewModel.filteredItems.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -144,14 +157,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
       return UICollectionViewCell()
     }
 
-    let item = viewModel.items[indexPath.row]
+    let item = viewModel.filteredItems[indexPath.row]
     cell.configure(with: ShopItemCollectionViewCell.Item(priceText: item.price.orEmpty, nameText: item.name.orEmpty, isFavorited: false, imageUrl: item.imageUrl.orEmpty))
 
     return cell
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let item = viewModel.items[indexPath.row]
+    let item = viewModel.filteredItems[indexPath.row]
     presentDetailViewController(for: item)
   }
 
