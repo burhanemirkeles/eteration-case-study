@@ -17,17 +17,7 @@ class HomeViewController: UIViewController {
     return searchBar
   }()
 
-  private let filtersView: FiltersView = {
-    let view = FiltersView(
-      item: FiltersView.Item(
-        onTapButton: {
-          // TODO: Add On Tap Action
-        }
-      )
-    )
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
-  }()
+  private var filtersView: FiltersView!
 
   private let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -68,6 +58,14 @@ class HomeViewController: UIViewController {
   }
 
   private func setupFiltersView() {
+    let filtersViewItem = FiltersView.Item(
+      onTapButton: { [weak self] in
+        self?.presentFilterViewController()
+      }
+    )
+    filtersView = FiltersView(item: filtersViewItem)
+    filtersView.translatesAutoresizingMaskIntoConstraints = false
+
     view.addSubview(filtersView)
 
     NSLayoutConstraint.activate([
@@ -91,6 +89,12 @@ class HomeViewController: UIViewController {
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
+  }
+
+  private func presentFilterViewController() {
+    let filterViewController = FilterViewController()
+    filterViewController.modalPresentationStyle = .pageSheet
+    present(filterViewController, animated: true, completion: nil)
   }
 }
 // MARK: CollectionView Delegate & Layout
