@@ -22,6 +22,8 @@
 		7520DE372C5D749700472E19 /* eterationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE362C5D749700472E19 /* eterationTests.swift */; };
 		7520DE412C5D749700472E19 /* eterationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE402C5D749700472E19 /* eterationUITests.swift */; };
 		7520DE432C5D749700472E19 /* eterationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE422C5D749700472E19 /* eterationUITestsLaunchTests.swift */; };
+		755F30F92C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */; };
+		755F30FB2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */; };
 		75614CD52C5DA4A100C52716 /* ShopItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75614CD42C5DA4A100C52716 /* ShopItemCollectionViewCell.swift */; };
 		75614CD72C5DC0C400C52716 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75614CD62C5DC0C400C52716 /* FiltersViewController.swift */; };
 		75614CD92C5DC1DF00C52716 /* ShopItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75614CD82C5DC1DF00C52716 /* ShopItemModel.swift */; };
@@ -73,6 +75,8 @@
 		7520DE3C2C5D749700472E19 /* eterationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eterationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7520DE402C5D749700472E19 /* eterationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eterationUITests.swift; sourceTree = "<group>"; };
 		7520DE422C5D749700472E19 /* eterationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eterationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UICollectionView.swift"; sourceTree = "<group>"; };
+		755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UISearchbar.swift"; sourceTree = "<group>"; };
 		75614CD42C5DA4A100C52716 /* ShopItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		75614CD62C5DC0C400C52716 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		75614CD82C5DC1DF00C52716 /* ShopItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemModel.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				7565F4B22C5D7EEB009FCB89 /* HomeViewController.swift */,
 				75614CD62C5DC0C400C52716 /* FiltersViewController.swift */,
 				75614CDC2C5DC3E100C52716 /* DetailViewController.swift */,
+				755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */,
+				755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -387,10 +393,12 @@
 				7565F4B72C5D7F24009FCB89 /* HomeModel.swift in Sources */,
 				7520DE272C5D749500472E19 /* eteration.xcdatamodeld in Sources */,
 				7515618B2C5D8D6D008FF752 /* EmptyValueRepresentable.swift in Sources */,
+				755F30F92C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift in Sources */,
 				75614CD52C5DA4A100C52716 /* ShopItemCollectionViewCell.swift in Sources */,
 				7515618F2C5D940A008FF752 /* SearchBar.swift in Sources */,
 				7520DE1D2C5D749500472E19 /* AppDelegate.swift in Sources */,
 				751561932C5DA25E008FF752 /* Typealias.swift in Sources */,
+				755F30FB2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift in Sources */,
 				7520DE1F2C5D749500472E19 /* SceneDelegate.swift in Sources */,
 				75614CDB2C5DC24600C52716 /* DetailViewModel.swift in Sources */,
 			);
