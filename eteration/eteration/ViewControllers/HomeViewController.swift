@@ -29,6 +29,14 @@ class HomeViewController: UIViewController {
     return view
   }()
 
+  private let collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.backgroundColor = .white
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    return collectionView
+  }()
+
   init() {
     let model = HomeModel(title: "Home Page")
     self.viewModel = HomeViewModel(model: model)
@@ -44,6 +52,7 @@ class HomeViewController: UIViewController {
     view.backgroundColor = .white
     setupSearchBar()
     setupFiltersView()
+    setupCollectionView()
   }
 
   // MARK: - Configure Subviews
@@ -67,5 +76,40 @@ class HomeViewController: UIViewController {
       filtersView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
       filtersView.heightAnchor.constraint(equalToConstant: 36)
     ])
+  }
+
+  private func setupCollectionView() {
+    view.addSubview(collectionView)
+
+    collectionView.dataSource = self
+    collectionView.delegate = self
+    collectionView.register(ShopItemCollectionViewCell.self, forCellWithReuseIdentifier: "ShopItemCollectionViewCell")
+
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: filtersView.bottomAnchor, constant: 10),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    ])
+  }
+}
+// MARK: CollectionView Delegate & Layout
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 5
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCollectionViewCell", for: indexPath) as! ShopItemCollectionViewCell
+    cell.configure(with: ShopItemCollectionViewCell.Item(priceText: "123", nameText: "123", isFavorited: true, imageUrl: "https://loremflickr.com/640/480/food"))
+    return cell
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 170, height: 302)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
   }
 }
