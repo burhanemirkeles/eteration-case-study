@@ -69,6 +69,15 @@ public extension Swift.Optional where Wrapped == String {
     guard let self = self, let string = string else { return false }
     return self == string
   }
+
+  var orEmpty: Wrapped {
+    switch self {
+    case .some(let value):
+      return value
+    case .none:
+      return Wrapped.emptyValue
+    }
+  }
 }
 
 

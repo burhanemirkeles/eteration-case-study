@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
     view.addSubview(customSearchBar)
 
     NSLayoutConstraint.activate([
-      customSearchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+      customSearchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       customSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
       customSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
       customSearchBar.heightAnchor.constraint(equalToConstant: 40)
@@ -96,6 +96,14 @@ class HomeViewController: UIViewController {
     filterViewController.modalPresentationStyle = .pageSheet
     present(filterViewController, animated: true, completion: nil)
   }
+
+  private func presentDetailViewController(for item: ShopItem) {
+    let viewModel = DetailViewModel(item: item)
+    let detailViewController = DetailViewController(viewModel: viewModel)
+    //    detailViewController.hidesBottomBarWhenPushed = false
+    navigationController?.pushViewController(detailViewController, animated: true)
+  }
+
 }
 // MARK: CollectionView Delegate & Layout
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -104,9 +112,20 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCollectionViewCell", for: indexPath) as! ShopItemCollectionViewCell
-    cell.configure(with: ShopItemCollectionViewCell.Item(priceText: "123", nameText: "123", isFavorited: true, imageUrl: "https://loremflickr.com/640/480/food"))
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCollectionViewCell", for: indexPath) as? ShopItemCollectionViewCell else {
+      return UICollectionViewCell()
+    }
+
+    let item = ShopItem(createdAt: "2023-07-17T07:21:02.529Z", name: "iPhone 13 Pro Max 256Gb", imageUrl: "https://loremflickr.com/640/480/food", price: "15.000 ₺", description: "zort", model: "iPhone 13", brand: "Apple", id: "1")
+    cell.configure(with: ShopItemCollectionViewCell.Item(priceText: item.price.orEmpty, nameText: item.name.orEmpty, isFavorited: false, imageUrl: item.imageUrl.orEmpty))
+
     return cell
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let item = ShopItem(createdAt: "123", name: "Apple iPhone 14 Pro Max 256 GB", imageUrl: "https://loremflickr.com/640/480/food", price: "123421 ₺", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales nibh pretium ipsum faucibus, a commodo tortor blandit. Duis pellentesque, purus sed gravida sagittis, tortor urna eleifend ante, a volutpat ex est vel ipsum. Etiam in auctor nisi. Donec in mattis enim, in bibendum lorem. Nam vitae semper quam.", model: "14 Pro Max", brand: "Apple", id: "1")
+    
+    presentDetailViewController(for: item)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
