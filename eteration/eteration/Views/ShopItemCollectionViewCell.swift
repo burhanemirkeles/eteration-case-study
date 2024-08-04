@@ -12,6 +12,7 @@ import CoreData
 class ShopItemCollectionViewCell: UICollectionViewCell {
   private var shopItem: ShopItem?
   public var reloadCallback: VoidCallback?
+  public var favoriteCallback: VoidCallback?
 
   private let itemImageView: UIImageView = {
     let imageView = UIImageView()
@@ -119,6 +120,7 @@ class ShopItemCollectionViewCell: UICollectionViewCell {
 
   @objc func favoriteButtonTapped() {
     favoriteButton.isSelected.toggle()
+    favoriteCallback?()
   }
 
   @objc func actionButtonTapped() {

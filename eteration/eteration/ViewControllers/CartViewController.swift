@@ -20,7 +20,7 @@ class CartViewController: UIViewController {
     let bottomView = DetailBottomView(
       item: DetailBottomView.Item(
         headerText: "Total:",
-        price: "123213",
+        price: "0",
         buttonTitle: "Complete"
       )
     )

@@ -34,10 +34,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
       if let tabBarController = self.tabBarController as? MainTabBarController {
         let cartTabIndex = 1
         if let cartVC = tabBarController.viewControllers?[cartTabIndex] as? CartViewController {
-          let currentBadgeValue = Int(cartVC.tabBarItem.badgeValue ?? "0") ?? 0
           cartVC.tabBarItem.badgeValue = "\(CoreDataHelper.shared.fetchCartItems().count)"
         }
       }
+    }
+
+    cell.favoriteCallback = {
+      let alert = UIAlertController(
+        title: "This feature is not implemented",
+        message: "It can be implemented same as adding cart feature. Create a new entity for favorited items in CoreData. Funcs in CoreDataHelper can be refactored for these two entities.",
+        preferredStyle: .alert
+      )
+      alert.addAction(UIAlertAction(title: "Ok!", style: .default))
+      self.present(alert, animated: true, completion: nil)
     }
 
     return cell

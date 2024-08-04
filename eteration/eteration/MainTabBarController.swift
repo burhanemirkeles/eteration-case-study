@@ -20,10 +20,10 @@ class MainTabBarController: UITabBarController {
     secondVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(resource: .basketIcon), tag: 1)
     secondVC.tabBarItem.badgeValue = String(badgeValue)
 
-    let thirdVC = UIViewController()
+    let thirdVC = NotImplementedViewsController()
     thirdVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(resource: .favoriteIcon), tag: 2)
 
-    let fourthVC = UIViewController()
+    let fourthVC = NotImplementedViewsController()
     fourthVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(resource: .profileIcon), tag: 3)
 
     viewControllers = [homeVC, secondVC, thirdVC, fourthVC]

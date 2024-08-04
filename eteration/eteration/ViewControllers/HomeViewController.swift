@@ -119,7 +119,7 @@ class HomeViewController: BaseViewController {
   }
 
   private func presentFilterViewController() {
-    let filterViewController = FilterViewController()
+    let filterViewController = NotImplementedViewsController()
     filterViewController.modalPresentationStyle = .pageSheet
     if let sheet = filterViewController.sheetPresentationController {
       sheet.prefersGrabberVisible = true
