@@ -56,7 +56,7 @@ class CartViewController: UIViewController {
 extension CartViewController: UITableViewDataSource, UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel?.items.count ?? 0
+    return (viewModel?.items.count).orZero
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

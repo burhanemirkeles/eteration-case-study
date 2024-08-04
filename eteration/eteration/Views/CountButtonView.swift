@@ -54,7 +54,7 @@ public final class CountButtonView: UIView {
   
   init(item: CountButtonView.Item) {
     super.init(frame: .zero)
-    self.count = item.count ?? 0
+    self.count = item.count.orZero
     label.text = "\(count)"
     setupView()
     minusButton.addTarget(self, action: #selector(counter), for: .touchUpInside)

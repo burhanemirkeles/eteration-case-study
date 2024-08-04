@@ -43,6 +43,11 @@ public extension Swift.Optional where Wrapped == Int {
     guard let self = self else { return defaultValue }
     return self
   }
+
+  var orZero: Int {
+    guard let self else { return 0}
+    return self
+  }
 }
 
 // MARK: Nil Check
