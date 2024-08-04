@@ -32,6 +32,11 @@ class CartViewController: UIViewController {
     setupTableView()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    viewModel?.fetchItems()
+    tableView.reloadData()
+  }
+
   private func setupTableView() {
     view.addSubview(tableView)
     tableView.dataSource = self

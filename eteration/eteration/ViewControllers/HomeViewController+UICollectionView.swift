@@ -30,6 +30,17 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
       )
     )
 
+    cell.reloadCallback = {
+      if let tabBarController = self.tabBarController as? MainTabBarController {
+        let cartTabIndex = 1 // CartViewController'ın tab bar indexi
+        if let cartVC = tabBarController.viewControllers?[cartTabIndex] as? CartViewController {
+          // Burada badgeValue'yu güncelleyebilirsiniz. Örneğin:
+          let currentBadgeValue = Int(cartVC.tabBarItem.badgeValue ?? "0") ?? 0
+          cartVC.tabBarItem.badgeValue = "\(currentBadgeValue + 1)"
+        }
+      }
+    }
+
     return cell
   }
 

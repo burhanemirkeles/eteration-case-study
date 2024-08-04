@@ -11,6 +11,7 @@ import CoreData
 
 class ShopItemCollectionViewCell: UICollectionViewCell {
   private var shopItem: ShopItem?
+  public var reloadCallback: VoidCallback?
 
   private let itemImageView: UIImageView = {
     let imageView = UIImageView()
@@ -122,5 +123,6 @@ class ShopItemCollectionViewCell: UICollectionViewCell {
 
   @objc func actionButtonTapped() {
     CoreDataHelper.shared.saveData(shopItem: self.shopItem)
+    reloadCallback?()
   }
 }
