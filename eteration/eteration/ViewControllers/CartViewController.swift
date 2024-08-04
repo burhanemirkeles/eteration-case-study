@@ -16,6 +16,18 @@ class CartViewController: UIViewController {
     return tableView
   }()
 
+  private let bottomView: DetailBottomView = {
+    let bottomView = DetailBottomView(
+      item: DetailBottomView.Item(
+        headerText: "Total:",
+        price: "123213",
+        buttonTitle: "Complete"
+      )
+    )
+    bottomView.translatesAutoresizingMaskIntoConstraints = false
+    return bottomView
+  }()
+
   init() {
     super.init(nibName: nil, bundle: nil)
     self.viewModel = CartViewModel()
@@ -39,6 +51,7 @@ class CartViewController: UIViewController {
 
   private func setupTableView() {
     view.addSubview(tableView)
+    view.addSubview(bottomView)
     tableView.dataSource = self
     tableView.delegate = self
     tableView.separatorStyle = .none
@@ -48,7 +61,12 @@ class CartViewController: UIViewController {
       tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-      tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+      bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+      bottomView.heightAnchor.constraint(equalToConstant: 80)
     ])
   }
 }

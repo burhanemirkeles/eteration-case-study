@@ -48,7 +48,12 @@ public final class CountButtonView: UIView {
 
   public var count: Int = 0 {
     didSet {
-      label.text = "\(count)"
+      if count > 0 {
+        label.text = "\(count)"
+      } else {
+        count = 0
+        label.text = "0"
+      }
     }
   }
   

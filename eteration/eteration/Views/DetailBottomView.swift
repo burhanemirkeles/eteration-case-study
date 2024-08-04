@@ -10,30 +10,32 @@ import UIKit
 class DetailBottomView: UIView {
 
   struct Item {
+    let headerText: String?
     let price: String
+    let buttonTitle: String?
   }
 
   private let priceTitleLabel: UILabel = {
     let label = UILabel()
-    label.text = "Price"
-    label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+    label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+    label.textColor = .buttonBlue
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
 
   private let priceLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 16)
+    label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
 
   private let actionButton: UIButton = {
     let button = UIButton(type: .system)
-    button.setTitle("Add to Cart", for: .normal)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = .systemBlue
+    button.backgroundColor = .buttonBlue
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     button.layer.cornerRadius = 8
     button.clipsToBounds = true
     return button
@@ -43,6 +45,8 @@ class DetailBottomView: UIView {
     super.init(frame: .zero)
     setupViews()
     priceLabel.text = item.price
+    priceTitleLabel.text = item.headerText
+    actionButton.setTitle(item.buttonTitle, for: .normal)
   }
 
   required init?(coder: NSCoder) {

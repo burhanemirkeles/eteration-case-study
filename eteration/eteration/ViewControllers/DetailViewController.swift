@@ -17,7 +17,13 @@ class DetailViewController: UIViewController {
 
   init(viewModel: DetailViewModel) {
     self.viewModel = viewModel
-    self.detailBottomView = DetailBottomView(item: DetailBottomView.Item(price: viewModel.price))
+    self.detailBottomView = DetailBottomView(
+      item: DetailBottomView.Item(
+        headerText: "Price:",
+        price: viewModel.price,
+        buttonTitle: "Add to Cart"
+      )
+    )
     self.detailItemView = DetailItemView(
       item: DetailItemView.Item(
         imageURL: viewModel.image,
