@@ -57,3 +57,14 @@ class DetailViewController: UIViewController {
     ])
   }
 }
+#if DEBUG
+extension DetailViewController {
+  var testDetailItemView: DetailItemView {
+    return detailItemView
+  }
+
+  var testDetailBottomView: DetailBottomView {
+    return detailBottomView
+  }
+}
+#endif

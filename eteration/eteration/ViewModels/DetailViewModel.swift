@@ -30,3 +30,11 @@ class DetailViewModel {
     return item.price.orEmpty
   }
 }
+
+#if DEBUG
+extension DetailViewModel {
+  var testItem: ShopItem {
+    return item
+  }
+}
+#endif
