@@ -12,7 +12,7 @@ import CoreData
 class HomeViewModel {
   private let model: HomeModel
   private var allItems: [ShopItem] = []
-  var cartItems: [ShopItem] = []
+  var cartItems: [AddedCartItem] = []
   var filteredItems: [ShopItem] = []
   var reloadCollectionView: (() -> Void)?
 

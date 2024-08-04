@@ -16,7 +16,7 @@ class MainTabBarController: UITabBarController {
     homeVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(resource: .homeIcon), tag: 0)
 
     let badgeValue = CoreDataHelper.shared.fetchCartItems().count
-    let secondVC = UIViewController()
+    let secondVC = CartViewController()
     secondVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(resource: .basketIcon), tag: 1)
     secondVC.tabBarItem.badgeValue = String(badgeValue)
 

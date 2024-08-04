@@ -24,3 +24,8 @@ public struct ShopItem: Codable {
     case id
   }
 }
+
+public struct AddedCartItem {
+  let item: ShopItem
+  var count: Int
+}

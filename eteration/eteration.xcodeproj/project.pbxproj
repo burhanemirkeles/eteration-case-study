@@ -33,6 +33,10 @@
 		7565F4B32C5D7EEB009FCB89 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565F4B22C5D7EEB009FCB89 /* HomeViewController.swift */; };
 		7565F4B52C5D7F0C009FCB89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565F4B42C5D7F0C009FCB89 /* HomeViewModel.swift */; };
 		7565F4B72C5D7F24009FCB89 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565F4B62C5D7F24009FCB89 /* HomeModel.swift */; };
+		7581F1C02C5ECA1A00A3A26C /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581F1BF2C5ECA1A00A3A26C /* CartItemTableViewCell.swift */; };
+		7581F1C22C5ECBDA00A3A26C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581F1C12C5ECBDA00A3A26C /* CartViewController.swift */; };
+		7581F1C42C5EE9B900A3A26C /* CountButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581F1C32C5EE9B900A3A26C /* CountButtonView.swift */; };
+		7581F1C62C5EF62800A3A26C /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581F1C52C5EF62800A3A26C /* CartViewModel.swift */; };
 		75A0A60E2C5D85EE00E714F1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 75A0A60D2C5D85EE00E714F1 /* Kingfisher */; };
 		75C449202C5E815D003F5CDF /* DetailBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4491F2C5E815D003F5CDF /* DetailBottomView.swift */; };
 		75C449222C5E8B7A003F5CDF /* DetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C449212C5E8B7A003F5CDF /* DetailItemView.swift */; };
@@ -88,6 +92,10 @@
 		7565F4B22C5D7EEB009FCB89 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7565F4B42C5D7F0C009FCB89 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7565F4B62C5D7F24009FCB89 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		7581F1BF2C5ECA1A00A3A26C /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
+		7581F1C12C5ECBDA00A3A26C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		7581F1C32C5EE9B900A3A26C /* CountButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountButtonView.swift; sourceTree = "<group>"; };
+		7581F1C52C5EF62800A3A26C /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		75C4491F2C5E815D003F5CDF /* DetailBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBottomView.swift; sourceTree = "<group>"; };
 		75C449212C5E8B7A003F5CDF /* DetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemView.swift; sourceTree = "<group>"; };
 		75C449242C5E9589003F5CDF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -213,6 +221,8 @@
 				75614CD42C5DA4A100C52716 /* ShopItemCollectionViewCell.swift */,
 				75C4491F2C5E815D003F5CDF /* DetailBottomView.swift */,
 				75C449212C5E8B7A003F5CDF /* DetailItemView.swift */,
+				7581F1BF2C5ECA1A00A3A26C /* CartItemTableViewCell.swift */,
+				7581F1C32C5EE9B900A3A26C /* CountButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +235,7 @@
 				75614CDC2C5DC3E100C52716 /* DetailViewController.swift */,
 				755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */,
 				755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */,
+				7581F1C12C5ECBDA00A3A26C /* CartViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 			children = (
 				7565F4B42C5D7F0C009FCB89 /* HomeViewModel.swift */,
 				75614CDA2C5DC24600C52716 /* DetailViewModel.swift */,
+				7581F1C52C5EF62800A3A26C /* CartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -391,6 +403,7 @@
 				75614CD72C5DC0C400C52716 /* FiltersViewController.swift in Sources */,
 				7565F4B52C5D7F0C009FCB89 /* HomeViewModel.swift in Sources */,
 				75EE16382C5EAADF0048B29F /* CartItemAttributes.swift in Sources */,
+				7581F1C22C5ECBDA00A3A26C /* CartViewController.swift in Sources */,
 				75C449222C5E8B7A003F5CDF /* DetailItemView.swift in Sources */,
 				75C449252C5E9589003F5CDF /* APIService.swift in Sources */,
 				7520DE212C5D749500472E19 /* MainTabBarController.swift in Sources */,
@@ -399,6 +412,9 @@
 				75614CD92C5DC1DF00C52716 /* ShopItemModel.swift in Sources */,
 				7565F4B72C5D7F24009FCB89 /* HomeModel.swift in Sources */,
 				7520DE272C5D749500472E19 /* eteration.xcdatamodeld in Sources */,
+				7581F1C42C5EE9B900A3A26C /* CountButtonView.swift in Sources */,
+				7581F1C62C5EF62800A3A26C /* CartViewModel.swift in Sources */,
+				7581F1C02C5ECA1A00A3A26C /* CartItemTableViewCell.swift in Sources */,
 				7515618B2C5D8D6D008FF752 /* EmptyValueRepresentable.swift in Sources */,
 				755F30F92C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift in Sources */,
 				75614CD52C5DA4A100C52716 /* ShopItemCollectionViewCell.swift in Sources */,
