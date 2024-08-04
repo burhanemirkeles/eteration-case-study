@@ -22,6 +22,7 @@
 		7520DE372C5D749700472E19 /* eterationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE362C5D749700472E19 /* eterationTests.swift */; };
 		7520DE412C5D749700472E19 /* eterationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE402C5D749700472E19 /* eterationUITests.swift */; };
 		7520DE432C5D749700472E19 /* eterationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DE422C5D749700472E19 /* eterationUITestsLaunchTests.swift */; };
+		7521D0282C6010F200B76376 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521D0272C6010F200B76376 /* BaseViewController.swift */; };
 		7524AFA12C5EBE52007470E0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524AFA02C5EBE52007470E0 /* CoreDataHelper.swift */; };
 		755F30F92C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */; };
 		755F30FB2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */; };
@@ -82,6 +83,7 @@
 		7520DE3C2C5D749700472E19 /* eterationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eterationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7520DE402C5D749700472E19 /* eterationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eterationUITests.swift; sourceTree = "<group>"; };
 		7520DE422C5D749700472E19 /* eterationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eterationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7521D0272C6010F200B76376 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7524AFA02C5EBE52007470E0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UISearchbar.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				755F30F82C5E9EBC00F394FE /* HomeViewController+UICollectionView.swift */,
 				755F30FA2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift */,
 				7581F1C12C5ECBDA00A3A26C /* CartViewController.swift */,
+				7521D0272C6010F200B76376 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				755F30FB2C5E9F6000F394FE /* HomeViewController+UISearchbar.swift in Sources */,
 				7520DE1F2C5D749500472E19 /* SceneDelegate.swift in Sources */,
 				75614CDB2C5DC24600C52716 /* DetailViewModel.swift in Sources */,
+				7521D0282C6010F200B76376 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

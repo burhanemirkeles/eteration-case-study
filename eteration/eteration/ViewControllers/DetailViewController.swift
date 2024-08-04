@@ -7,8 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
+class DetailViewController: BaseViewController {
   private var viewModel: DetailViewModel
 
   private let detailItemView: DetailItemView
@@ -47,13 +46,6 @@ class DetailViewController: UIViewController {
 
     detailBottomView.actionButtonTappedVoidCallback = {
       CoreDataHelper.shared.saveData(shopItem: self.viewModel.item)
-      if let tabBarController = self.tabBarController as? MainTabBarController {
-        let cartTabIndex = 1
-        if let cartVC = tabBarController.viewControllers?[cartTabIndex] as? CartViewController {
-          let currentBadgeValue = Int(cartVC.tabBarItem.badgeValue ?? "0") ?? 0
-          cartVC.tabBarItem.badgeValue = "\(currentBadgeValue + 1)"
-        }
-      }
     }
   }
 

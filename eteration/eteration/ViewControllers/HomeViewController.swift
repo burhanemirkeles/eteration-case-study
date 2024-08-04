@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
   internal var viewModel: HomeViewModel
 
   // MARK: - Subviews
@@ -55,6 +55,12 @@ class HomeViewController: UIViewController {
     setupBindings()
     viewModel.fetchCartItems()
     viewModel.fetchItems()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    viewModel.fetchCartItems()
+    updateBadgeView(badgeValue: "\(viewModel.cartItems.count)")
   }
 
   // MARK: - Configure Subviews
