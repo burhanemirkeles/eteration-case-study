@@ -86,3 +86,11 @@ public final class DetailItemView: UIView {
     imageView.kf.setImage(with: URL(string: item.imageURL))
   }
 }
+
+#if DEBUG
+extension DetailItemView {
+  var testItem: DetailItemView.Item {
+    return item
+  }
+}
+#endif
