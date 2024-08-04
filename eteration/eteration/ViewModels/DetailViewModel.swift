@@ -8,7 +8,7 @@
 import Foundation
 
 class DetailViewModel {
-  private let item: ShopItem
+  public let item: ShopItem
 
   init(item: ShopItem) {
     self.item = item

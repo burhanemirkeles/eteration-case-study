@@ -9,6 +9,8 @@ import UIKit
 
 class CartItemTableViewCell: UITableViewCell {
   public var item: AddedCartItem?
+  public var deleteCallback: VoidCallback?
+  public var addCallback: VoidCallback?
   // MARK: - Subviews
   private let titleLabel: UILabel = {
     let label = UILabel()
@@ -28,7 +30,7 @@ class CartItemTableViewCell: UITableViewCell {
 
   // MARK: - Initializer
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    self.countButtonView = CountButtonView(item: CountButtonView.Item(count: 23))
+    self.countButtonView = CountButtonView(item: CountButtonView.Item(count: item?.count))
     self.countButtonView.translatesAutoresizingMaskIntoConstraints = false
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupSubviews()
@@ -70,5 +72,11 @@ class CartItemTableViewCell: UITableViewCell {
     titleLabel.text = item.name
     detailLabel.text = item.price
     countButtonView.count = quantity
+    countButtonView.deleteCallback = { [weak self] in
+      self?.deleteCallback?()
+    }
+    countButtonView.addCallback = { [weak self] in
+      self?.addCallback?()
+    }
   }
 }

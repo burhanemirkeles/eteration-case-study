@@ -12,6 +12,9 @@ public final class CountButtonView: UIView {
     let count: Int?
   }
 
+  var deleteCallback: VoidCallback?
+  var addCallback: VoidCallback?
+
   private let minusButton: UIButton = {
     let button = UIButton()
     button.backgroundColor = .lightGray.withAlphaComponent(0.5)
@@ -53,6 +56,7 @@ public final class CountButtonView: UIView {
       } else {
         count = 0
         label.text = "0"
+        deleteCallback?()
       }
     }
   }
@@ -104,6 +108,7 @@ public final class CountButtonView: UIView {
     }
     if sender.tag == 1 {
       count += 1
+      addCallback?()
     }
   }
 

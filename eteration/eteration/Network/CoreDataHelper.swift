@@ -33,14 +33,14 @@ public class CoreDataHelper {
     }
   }
 
-  func deleteData(shopItem: ShopItem?) {
-    let  appDelegate = UIApplication.shared.delegate as! AppDelegate
+  func deleteData(shopItemId: String?) {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = appDelegate.persistentContainer.viewContext
     let coord = context.persistentStoreCoordinator
 
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CartItem")
 
-    let predicate = NSPredicate(format: "id == %@", (shopItem?.id).orEmpty)
+    let predicate = NSPredicate(format: "id == %@", shopItemId.orEmpty)
     fetchRequest.predicate = predicate
 
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

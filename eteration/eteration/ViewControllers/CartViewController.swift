@@ -82,19 +82,40 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
       return UITableViewCell()
     }
     if let addedCartItem = viewModel?.items[indexPath.row] {
+      let shopItem = ShopItem(
+        createdAt: addedCartItem.item.createdAt,
+        name: addedCartItem.item.name,
+        imageUrl: addedCartItem.item.imageUrl,
+        price: addedCartItem.item.price,
+        description: addedCartItem.item.description,
+        model: addedCartItem.item.model,
+        brand: addedCartItem.item.brand,
+        id: addedCartItem.item.id
+      )
+
       cell.configure(
-        with: ShopItem(
-          createdAt: addedCartItem.item.createdAt,
-          name: addedCartItem.item.name,
-          imageUrl: addedCartItem.item.imageUrl,
-          price: addedCartItem.item.price,
-          description: addedCartItem.item.description,
-          model: addedCartItem.item.model,
-          brand: addedCartItem.item.brand,
-          id: addedCartItem.item.id
-        ),
+        with: shopItem,
         quantity: addedCartItem.count
       )
+
+      cell.deleteCallback = { [ weak self] in
+        CoreDataHelper.shared.deleteData(shopItemId: addedCartItem.item.id)
+        self?.viewModel?.items = CoreDataHelper.shared.fetchCartItems()
+        tableView.reloadData()
+
+        if let tabBarController = self?.tabBarController as? MainTabBarController {
+          let cartTabIndex = 1
+          if let cartVC = tabBarController.viewControllers?[cartTabIndex] as? CartViewController {
+            cartVC.tabBarItem.badgeValue = "\(String((self?.viewModel?.items.count).orZero))"
+          }
+        }
+      }
+
+      cell.addCallback = { [weak self] in
+        CoreDataHelper.shared.saveData(shopItem: shopItem)
+        self?.viewModel?.items = CoreDataHelper.shared.fetchCartItems()
+        tableView.reloadData()
+      }
     }
     return cell
   }

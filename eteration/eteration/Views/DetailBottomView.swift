@@ -15,6 +15,9 @@ class DetailBottomView: UIView {
     let buttonTitle: String?
   }
 
+  var priceText: String?
+  var actionButtonTappedVoidCallback: VoidCallback?
+
   private let priceTitleLabel: UILabel = {
     let label = UILabel()
     label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -44,9 +47,15 @@ class DetailBottomView: UIView {
   init(item: Item) {
     super.init(frame: .zero)
     setupViews()
-    priceLabel.text = item.price
+    priceText = item.price
+    priceLabel.text = priceText
     priceTitleLabel.text = item.headerText
     actionButton.setTitle(item.buttonTitle, for: .normal)
+    actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+  }
+
+  @objc func actionButtonTapped() {
+    actionButtonTappedVoidCallback?()
   }
 
   required init?(coder: NSCoder) {

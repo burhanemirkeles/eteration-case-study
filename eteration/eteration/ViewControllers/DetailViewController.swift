@@ -44,6 +44,17 @@ class DetailViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .white
     setupViews()
+
+    detailBottomView.actionButtonTappedVoidCallback = {
+      CoreDataHelper.shared.saveData(shopItem: self.viewModel.item)
+      if let tabBarController = self.tabBarController as? MainTabBarController {
+        let cartTabIndex = 1
+        if let cartVC = tabBarController.viewControllers?[cartTabIndex] as? CartViewController {
+          let currentBadgeValue = Int(cartVC.tabBarItem.badgeValue ?? "0") ?? 0
+          cartVC.tabBarItem.badgeValue = "\(currentBadgeValue + 1)"
+        }
+      }
+    }
   }
 
   private func setupViews() {
